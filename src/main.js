@@ -5,6 +5,8 @@ import VueRouter from 'vue-router'
 import router from './router'
 import store from './store'
 import Vant from 'vant'
+
+import './styles/index.css'
 import 'vant/lib/index.css'
 
 Vue.use(VueRouter)

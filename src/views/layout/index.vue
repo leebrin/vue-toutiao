@@ -1,16 +1,34 @@
 <template>
-  <div>
-    <van-tabbar v-model="active">
-      <van-tabbar-item icon="home-o">标签</van-tabbar-item>
-      <van-tabbar-item icon="search">标签</van-tabbar-item>
-      <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
+  <div class="layout">
+    <!-- 子路由出口 -->
+    <router-view></router-view>
+    <!-- 子路由出口 -->
+
+    <!-- 底部导航栏 -->
+    <van-tabbar v-model="active" route>
+      <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
+      <van-tabbar-item icon="comment" to="/qa">问答</van-tabbar-item>
+      <van-tabbar-item icon="video-o" to="/video">视频</van-tabbar-item>
+      <van-tabbar-item icon="manager-o" to="/my">我的</van-tabbar-item>
     </van-tabbar>
+    <!-- 底部导航栏 -->
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'Layout',
+  components: {},
+  props: {},
+  data() {
+    return {
+      active: 0,
+    }
+  },
+  methods: {},
+  computed: {},
+  watch: {},
+}
 </script>
 
 <style></style>
