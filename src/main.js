@@ -6,8 +6,11 @@ import router from './router'
 import store from './store'
 import Vant from 'vant'
 
-import './styles/index.css'
+// 自动设置rem基准值
+import 'amfe-flexible'
+
 import 'vant/lib/index.css'
+import './styles/index.css'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)

@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'iconfont';
+  font-family: 'icon';
   /* Project id 3144498 */
   src: url('//at.alicdn.com/t/font_3144498_c0khdivi34h.woff2?t=1642738780043') format('woff2'), url('//at.alicdn.com/t/font_3144498_c0khdivi34h.woff?t=1642738780043') format('woff'), url('//at.alicdn.com/t/font_3144498_c0khdivi34h.ttf?t=1642738780043') format('truetype');
 }
-.iconfont {
-  font-family: 'iconfont' !important;
+.icon {
+  font-family: 'icon' !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -176,8 +176,8 @@ body {
   background-color: #3296fa;
 }
 .van-nav-bar__title {
-  color: #fff !important;
+  color: #fff;
 }
 .van-icon-arrow-left {
-  color: #fff !important;
+  color: #fff;
 }
