@@ -183,3 +183,42 @@ export const getItem = (name) => {
 
 可以给退出登录按钮绑定事件
 通过 this.\$store.commit('setUser', null)将 vuex 里的 state 中的 user 清空（清除 token 数据），切换成未登录状态页面
+
+## /deep/解释
+
+样式不起作用的时候用/deep/其实是一个样式作用域的问题。
+
+默认我们的样式，是全局样式，如果不希望当前组件中的样式影响别的样式。
+
+就可以添加一个作用域，也就是 style 里的 scoped
+
+在有作用域的组件中如何给子组件设置样式？
+
+默认只能作用到子组件的根节点：
+
+- 使用子组件根节点本身的 class 类名
+- 如果是第三方组件不知道它的根节点的类名，可审查元素查看，或增加一个类名，建议使用自己类名
+- 深度作用操作符
+  1、>>>(sass 之类的预处理器无法正确解析)
+  2、也可使用::v-deep
+  3、/deep/
+
+```html
+<div>
+  <span></span>
+</div>
+```
+
+可以让我们的样式作用的更深。因为我们增加的类名，优先级不一定有原本的子类高。本来我们的类名只能作用到根节点(div)，通过这个操作符可以让样式作用到 span 这些节点上。
+
+## 关于第三方图片资源 403 问题
+
+第三方平台处理图片资源保护：referer
+服务端一般使用 referer 请求头识别访问资源，然后处理访问资源
+
+referer 是 http 请求头的一部分，浏览器向 web 服务器发送请求的时候一般会带上 referer
+
+解决方法：不发送 referer 如何设置？
+
+- 1、<img> <a> <area> <ifram> <script>加上 referrerpolicy 属性，设置为 no-referrer
+- 2、直接在 html 页面中通过 meta 属性全局配置 <meta name='referrer' content='no-referrer' />
