@@ -1,5 +1,5 @@
 <template>
-  <div>文章搜索</div>
+  <div class="article-container">文章搜索</div>
 </template>
 
 <script>
@@ -16,4 +16,4 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="less" scoped></style>

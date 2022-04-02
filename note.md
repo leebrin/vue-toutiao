@@ -222,3 +222,34 @@ referer 是 http 请求头的一部分，浏览器向 web 服务器发送请求�
 
 - 1、<img> <a> <area> <ifram> <script>加上 referrerpolicy 属性，设置为 no-referrer
 - 2、直接在 html 页面中通过 meta 属性全局配置 <meta name='referrer' content='no-referrer' />
+
+## day.js 处理相对时间 =>2kb
+
+npm i dayjs --save
+
+```js
+// 封装dayjs库
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+
+import relativeTime from 'dayjs/plugin/relativeTime'
+import Vue from 'vue'
+dayjs.extend(relativeTime)
+
+// 使用中文语言包
+dayjs.locale('zh-cn')
+
+Vue.filter('xianduiTime', (value) => {
+  return dayjs(value).from(dayjs())
+})
+```
+
+先初始化，把处理相对时间的代码，封装为全局过滤器、
+
+就可以在项目中进行使用了。
+
+记得要在 main.js 中引用
+
+```js
+import '@/utils/dayjs'
+```

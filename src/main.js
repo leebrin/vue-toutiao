@@ -11,6 +11,7 @@ import 'amfe-flexible'
 
 import 'vant/lib/index.css'
 import './styles/index.css'
+import '@/utils/dayjs'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
