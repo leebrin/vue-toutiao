@@ -88,3 +88,114 @@ export const getArticle = (params) => {
     params,
   })
 }
+
+/**
+ *  获取文章详情
+ */
+export const getArticleDetail = (articleId) => {
+  return request({
+    method: 'GET',
+    url: `/app/v1_0/articles/${articleId}`,
+  })
+}
+
+/**
+ *  关注用户
+ */
+export const addFollow = (userId) => {
+  return request({
+    method: 'POST',
+    url: '/app/v1_0/user/followings',
+    data: {
+      target: userId,
+    },
+  })
+}
+
+/**
+ *  取消关注用户
+ */
+export const cancelFollow = (userId) => {
+  return request({
+    method: 'DELETE',
+    url: `/app/v1_0/user/followings/${userId}`,
+  })
+}
+
+// 收藏文章
+// Path： /app/v1_0/article/collections
+// Method： POST
+export const addCollect = (articleId) => {
+  return request({
+    method: 'POST',
+    url: '/app/v1_0/article/collections',
+    data: {
+      target: articleId,
+    },
+  })
+}
+
+// 取消收藏
+// Path： /app/v1_0/article/collections/:target
+// Method： DELETE
+export const deleteCollect = (articleId) => {
+  return request({
+    method: 'DELETE',
+    url: `/app/v1_0/article/collections/${articleId}`,
+  })
+}
+
+// 对文章点赞
+// Path： /app/v1_0/article/likings
+// Method： POST
+export const userLike = (articleId) => {
+  return request({
+    method: 'POST',
+    url: '/app/v1_0/article/likings',
+    data: {
+      target: articleId,
+    },
+  })
+}
+
+// 取消点赞
+// Path： /app/v1_0/article/likings/:target
+// Method： DELETE
+export const userCancelLike = (articleId) => {
+  return request({
+    method: 'DELETE',
+    url: `/app/v1_0/article/likings/${articleId}`,
+  })
+}
+
+//获取用户个人资料
+// Path： /app/v1_0/user/profile
+// Method： GET
+export const getUserProfile = () => {
+  return request({
+    method: 'GET',
+    url: '/app/v1_0/user/profile',
+  })
+}
+
+// 修改用户数据
+// Path： /app/v1_0/user/profile
+// Method： PATCH
+export const updateUserProfile = (data) => {
+  return request({
+    method: 'PATCH',
+    url: '/app/v1_0/user/profile',
+    data,
+  })
+}
+
+// 编辑用户头像
+// Path： /app/v1_0/user/photo
+// Method： PATCH
+export const updateUserPhoto = (data) => {
+  return request({
+    method: 'PATCH',
+    url: '/app/v1_0/user/photo',
+    data,
+  })
+}

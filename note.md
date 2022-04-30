@@ -253,3 +253,80 @@ Vue.filter('xianduiTime', (value) => {
 ```js
 import '@/utils/dayjs'
 ```
+
+## 在组件中获取动态路由参数
+
+```js
+方式一：this.$router.params.xxx
+方式二：props 传参（推荐） --> router 里设置 props 为 true
+```
+
+## 图片预览 使用 ImagePreview
+
+需单独引用：import { ImagePreview } from 'vant'
+
+```js
+ImagePreview(['http://img.yzcdn.cn/vant'])
+```
+
+## 组件上使用 v-model
+
+当传递给子组件的数据既要使用又要修改，可以使用 v-model 简写
+
+v-model='user.name'
+相当于=>
+默认传递一个名字叫 value 的数据
+:value='user.name'
+默认监听一个 input 事件
+@input='user.name=\$event'
+
+子组件中 props 声明一个 value 接受
+
+## 关于属性绑定的 sync 修饰符
+
+多个数据需要保持同步
+:gender.sync='user.gender' =>
+:gender='user.gender'
+@update:gender='user.gender = \$event'
+
+## 在弹出层里面预览图片
+
+<input type='file' />
+const blob = window.URL.createObjectURL(this.\$refs.file.files[0])
+
+## Content-Type
+
+如果要求 Content-Type 时 multipart/form-data,则一定要提交 FormData 数据对象，专门用于文件上传
+
+```js
+const fd = new FormData() fd.append('photo', this.file)
+```
+
+## 头像裁切
+
+awesome-vue => vue-croppa
+
+cropperjs
+
+npm install cropperjs
+
+```js
+import 'cropperjs/dist/cropper.css'
+import Cropper from 'cropperjs'
+```
+
+```js
+mounted() {
+    const image = this.$refs.image
+    this.cropper = new Cropper(image, {
+      viewMode: 1,
+      dragMode: 'move',
+      aspectRatio: 1,
+      autoCropArea: 1,
+      cropBoxMovable: true,
+      cropBoxResizable: true,
+      background: false,
+      movable: true,
+    })
+  },
+```
