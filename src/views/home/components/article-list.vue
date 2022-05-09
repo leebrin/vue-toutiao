@@ -1,5 +1,5 @@
 <template>
-  <div class="article-list">
+  <div class="article-list" ref="article-list">
     <van-pull-refresh
       v-model="refreshLoading"
       @refresh="onRefresh"
@@ -25,6 +25,7 @@
 <script>
 import { getArticle } from '@/api/user'
 import ArticleItem from '@/components/article-item/'
+import { debounce } from 'lodash'
 export default {
   name: 'ArticleList',
   data() {
@@ -35,6 +36,7 @@ export default {
       timestamp: null,
       refreshLoading: false,
       successText: '',
+      scrollTop: 0,
     }
   },
   components: { ArticleItem },
@@ -81,6 +83,15 @@ export default {
     },
   },
   created() {},
+  mounted() {
+    const articleList = this.$refs['article-list']
+    articleList.onscroll = debounce(() => {
+      this.scrollTop = articleList.scrollTop
+    }, 50)
+  },
+  activated() {
+    this.$refs['article-list'].scrollTop = this.scrollTop
+  },
 }
 </script>
 

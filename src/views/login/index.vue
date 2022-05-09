@@ -104,8 +104,11 @@ export default {
         //将后端返回的用户登录状态（token等数据）放到vuex容器中
         this.$store.commit('setUser', data.data)
 
+        //清楚layout的缓存，让它重新渲染
+        this.$store.commit('removeCachePage', 'Layout')
+
         //登录成功
-        this.$router.push('/my')
+        this.$router.push(this.$route.query.redirect || '/my')
         //console.log(res.config.data)
       } catch (error) {
         Toast.fail('登录失败,手机号或验证码错误')

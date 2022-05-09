@@ -83,6 +83,7 @@
 
     <!--修改头像-->
     <van-popup
+      class="avatar-popup"
       position="bottom"
       :style="{ height: '100%' }"
       v-model="isEditPhoto"
@@ -146,7 +147,7 @@ export default {
     color: #fff;
   }
 }
-.van-popup {
+.avatar-popup {
   background-color: rgb(26, 25, 25);
 }
 </style>

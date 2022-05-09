@@ -10,6 +10,7 @@ const USER_KEY = 'user'
 export default new Vuex.Store({
   state: {
     user: getItem(USER_KEY), //当前登录用户的登录状态（token等数据）
+    cachePages: ['Layout'],
   },
   mutations: {
     setUser(state, data) {
@@ -17,6 +18,17 @@ export default new Vuex.Store({
 
       //为了防止页面刷新数据丢失，将数据放至本地存储,数据持久化
       setItem(USER_KEY, state.user)
+    },
+    addCachePage(state, pageName) {
+      if (!state.cachePages.includes(pageName)) {
+        state.cachePages.push(pageName)
+      }
+    },
+    removeCachePage(state, pageName) {
+      const index = state.cachePages.indexOf(pageName)
+      if (index !== -1) {
+        state.cachePages.splice(index, 1)
+      }
     },
   },
   actions: {},

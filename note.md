@@ -330,3 +330,20 @@ mounted() {
     })
   },
 ```
+
+```js
+getCroppedCanvas(){
+    return new Promise(resolve=>{
+        this.cropper.getCroppedCanvas().toBlob((blob)=>{
+            resolve(blob)
+        })
+    })
+},
+```
+
+封装到 promise 中，这个可以获取到裁剪后的文件数据。
+
+## Websocket
+
+服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，双向平等对话
+属于服务器推送技术的一种

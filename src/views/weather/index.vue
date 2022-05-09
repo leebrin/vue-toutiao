@@ -1,10 +1,10 @@
 <template>
-  <div>问答页面</div>
+  <div>天气页面</div>
 </template>
 
 <script>
 export default {
-  name: 'Qa',
+  name: 'Weather',
   components: {},
   props: {},
   data() {

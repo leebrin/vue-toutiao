@@ -36,7 +36,16 @@
       </van-grid>
     </van-cell-group>
     <div v-else class="unlogin">
-      <div @click="$router.push('/login')">
+      <div
+        @click="
+          $router.push({
+            name: 'login',
+            query: {
+              redirect: '/my',
+            },
+          })
+        "
+      >
         <img class="mobile" src="./images/unlogin-img.png" alt="" srcset="" />
       </div>
       <div class="text">登录 / 注册</div>
@@ -50,7 +59,7 @@
       />
     </van-grid>
     <van-cell class="info-cell" title="消息通知" is-link to="/" />
-    <van-cell class="chat-cell mb5" title="小智同学" is-link to="/" />
+    <van-cell class="chat-cell mb5" title="小智同学" is-link to="/user/chat" />
     <van-cell
       v-if="user"
       @click="onLogout"
