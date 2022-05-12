@@ -10,7 +10,7 @@
     </van-cell>
     <van-cell
       :title="history"
-      v-for="(history, index) in searchHistories"
+      v-for="(history, index) in historises"
       :key="index"
       @click="delHistory(history, index)"
     >
@@ -33,13 +33,14 @@ export default {
   data() {
     return {
       isDel: false,
+      historises: this.searchHistories,
     }
   },
   methods: {
     delHistory(history, index) {
       if (this.isDel === true) {
-        this.searchHistories.splice(index, 1)
-        setItem('search-history', this.searchHistories)
+        this.historises.splice(index, 1)
+        setItem('search-history', this.historises)
         getItem('search-history')
       } else {
         this.$emit('search', history)
@@ -47,7 +48,7 @@ export default {
     },
     allDel() {
       removeItem('search-history')
-      this.searchHistories = getItem('search-history')
+      this.historises = getItem('search-history')
     },
   },
   computed: {},
@@ -63,5 +64,15 @@ export default {
   left: 0;
   right: 0;
   overflow: auto;
+  .van-cell__title:first {
+    flex: unset;
+    width: 200px;
+  }
+  .van-cell__value {
+    flex: unset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>
